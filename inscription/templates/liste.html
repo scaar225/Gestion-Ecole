@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+
+    <title>Hello, world!</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"  href ="{% url 'add' %}">Ajout </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled">Contacts</a>
+          </li>
+        </ul>
+      </div>
+    </nav>  
+    <div style="padding:15px;margin:15px;display:flex;justify-content:center;">
+      <p><big>Listes des etudiants enregistrés</big></p>
+    </div>
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-success">
+      {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nom</th>
+          <th scope="col">Prenom</th>
+          <th scope="col">age</th>
+          <th scope="col">classe</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        {% for  etudiant  in liste_Etudiant  %}
+        <tr>
+            <td> {{ etudiant.id }} </td>
+            <td> {{ etudiant.nom }} </td>
+            <td> {{ etudiant.prenom }} </td>
+            <td> {{etudiant.age }} </td>
+            <td> {{etudiant.classe}} </td>
+
+        </tr>
+        {% endfor %}
+
+      </tbody>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <title>ajouter un étudiant</title>
+  </head>
+  <body>
+    <h1></h1>
+    <form method="GET">
+      {% csrf_token %}
+    {% for error in form.non_field_errors %}
+      <div class="alert alert-danger">
+        {{ error}}
+      </div>
+    {% endfor %}
+    {% for field in inscription %}
+    
+    <div class="form-group">
+
+      <label for="exampleInputEmail1">{{field.label}}</label>
+      <input  type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  >
+    </div>
+      {% for error in field.errors %}
+      <div class = "alert alert-danger">
+        {{error}}
+      </div>
+      {% endfor %}
+    {% endfor %}
+    
+    <button type="submit" class="btn btn-primary">Ajouter</button>
+
+    </form>
+  </body>
+</html> 
