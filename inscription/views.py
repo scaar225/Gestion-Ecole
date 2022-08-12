@@ -15,7 +15,10 @@ def ajout(request):
     inscription = InscriptionForms()
     if request.method=="POST":
         inscription=InscriptionForms(request.POST)
-    context = {'inscription':inscription}
+        print(request.POST)
+        if inscription.is_valid():
+            inscription.save() 
+    context = {'form':inscription,'ecole':'esatic'}
     
 
     return render(request,'ajout.html', context)

@@ -11,8 +11,7 @@
     <title>ajouter un étudiant</title>
   </head>
   <body>
-    <h1>{{ecole}}</h1>
-    <div class="container">
+    <h1></h1>
     <form method="POST">
       {% csrf_token %}
     {% for error in form.non_field_errors %}
@@ -20,23 +19,23 @@
         {{ error}}
       </div>
     {% endfor %}
-    {% for field in form %}
-      <div class="mb-3 row">
-        <label class="col-sm-3 form-label"for="{ field.id_for_label  }">{{ field.label }}</label>
-          <div class="col-sm-8">
-          {{ field }}
-          {% for error in field.errors %}
+    {% for field in inscription %}
+    
+    <div class="form-group">
 
-          <div class="alert alert-danger ml-3">{{ error }}</div>
-          {% endfor %}
-          </div>
+      <label for="exampleInputEmail1">{{field.label}}</label>
+      <input  type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  name={{field.name}} >
+    </div>
+      {% for error in field.errors %}
+      <div class = "alert alert-danger">
+        {{error}}
       </div>
       {% endfor %}
+    {% endfor %}
     
     <button type="submit" class="btn btn-primary">Ajouter</button>
 
     </form>
-  </div>
   </body>
 </html> 
 
